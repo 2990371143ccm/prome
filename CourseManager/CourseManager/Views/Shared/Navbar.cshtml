@@ -1,0 +1,25 @@
+﻿ 
+@using CourseManager.Models
+
+@{
+    var site = (WebsiteInfo)ViewBag.Site;
+}
+<div class="content-wrapper">
+                <div class="float-left">
+                   
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                    @Html.ActionLink(WebsiteInfo.SiteName,"Index","Home",new{area=""},new{@class="navbar-brand"})
+                    <nav>
+                        <ul id="menu">
+                            @foreach(var link in site.ActionLinks)
+                            {
+                                <li>@Html.ActionLink(link.Name,link.Action,link.Controller)</li>
+                            }
+                        </ul>
+                    </nav>
+                </div>
+            </div>
